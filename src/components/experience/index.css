@@ -1,0 +1,50 @@
+.animate-data {
+    animation: div_show 0.3s linear;
+    transition: 0.5s;
+    height: 0rem;
+    /* overflow: hidden; */
+}
+
+.active {
+    height: 15rem;
+
+}
+
+.experiencescroll {
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        /* background: #0F1B30; */
+        background: transparent !important;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: transparent !important;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #152745;
+    }
+}
+
+@keyframes div_show {
+
+    0% {
+        width: 20rem;
+        height: 0rem;
+    }
+
+    100% {
+        width: 20rem;
+        height: 15rem;
+    }
+
+
+}
