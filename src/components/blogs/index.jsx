@@ -4,30 +4,31 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import BackgroundRadialDrop from "../commonComponent/backgroundRadialDrop";
+import { useEffect } from "react";
+import { blogs } from "../../apiServices/apiService";
+import axios from "axios";
 
 
-export default function Blogs() {
-    let blogsData = [{
-        blogHeading: 'Blog Heading 1',
-        blogLink: "assa/as",
-        blogContent: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At quidem facilis sunt dolorum, consequatur mollitia necessitatibus aspernatur? Omnis ullam minus laboriosam mollitia recusandae culpa odit voluptate nesciunt fuga! Earum, nostrum."
-    }, {
-        blogHeading: 'Blog Heading 1',
-        blogLink: "assa/as",
-        blogContent: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At quidem facilis sunt dolorum, consequatur mollitia necessitatibus aspernatur? Omnis ullam minus laboriosam mollitia recusandae culpa odit voluptate nesciunt fuga! Earum, nostrum."
-    }, {
-        blogHeading: 'Blog Heading 1',
-        blogLink: "assa/as",
-        blogContent: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At quidem facilis sunt dolorum, consequatur mollitia necessitatibus aspernatur? Omnis ullam minus laboriosam mollitia recusandae culpa odit voluptate nesciunt fuga! Earum, nostrum."
-    }, {
-        blogHeading: 'Blog Heading 1',
-        blogLink: "assa/as",
-        blogContent: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At quidem facilis sunt dolorum, consequatur mollitia necessitatibus aspernatur? Omnis ullam minus laboriosam mollitia recusandae culpa odit voluptate nesciunt fuga! Earum, nostrum."
-    }, {
-        blogHeading: 'Blog Heading 1',
-        blogLink: "assa/as",
-        blogContent: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. At quidem facilis sunt dolorum, consequatur mollitia necessitatibus aspernatur? Omnis ullam minus laboriosam mollitia recusandae culpa odit voluptate nesciunt fuga! Earum, nostrum."
-    }]
+export default function Blogs({ blogsRef }) {
+
+
+    const [blogsData, setBlogsData] = useState([])
+
+    useEffect(() => {
+        getBlogs();
+    }, [])
+
+    async function getBlogs() {
+        try {
+            const response = await axios.get(process.env.REACT_APP_BASE_URL + blogs())
+            if (response?.data?.success) {
+                setBlogsData(response?.data?.data)
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     function PaginatedItems({ itemsPerPage }) {
 
@@ -47,13 +48,13 @@ export default function Blogs() {
         };
 
         return <>
-            <div className="mt-12 grid grid-cols-2 gap-y-16 justify-center items-center place-items-center py-16 px-16 bg-hero_dark-100 w-[90%] h-[100%] rounded-3xl" >
+            <div className="mt-12 grid grid-cols-2 blogscroll gap-y-16 justify-center items-center place-items-center py-16 px-16 bg-hero_dark-100 w-[90%] h-[100%] rounded-3xl" >
                 {currentItems?.map((blog, idx) =>
                     <BlogSection
-                        blogLink={blog?.blogLink}
+                        blogLink={blog?.blog_link}
                         idx={idx}
-                        blogHeading={blog?.blogHeading}
-                        blogContent={blog?.blogContent}
+                        blogHeading={blog?.blog_name}
+                        blogContent={blog?.blog_description}
                     />
                 )
                 }
@@ -75,7 +76,7 @@ export default function Blogs() {
     }
 
     return (
-        <div className="mt-28 flex justify-center items-center flex-col relative">
+        <div className="mt-28 flex justify-center items-center flex-col relative" ref={blogsRef}>
             <h2 className="font-semibold text-3xl">Blogs</h2>
             <BackgroundRadialDrop radial_class={"w-r8 h-r8 absolute -top-[40%] -right-[30%] animate_rotation_c"} />
             <>

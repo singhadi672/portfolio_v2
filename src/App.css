@@ -3,6 +3,26 @@
   color: white;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0F1B30;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #152745;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #152745;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
