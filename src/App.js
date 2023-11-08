@@ -17,7 +17,7 @@ function App() {
   const aboutMeRef = useRef(null)
   return (
     <div className="App bg-hero_dark">
-      <div className='bg-hero_dark text-white px-20 pt-6 pb-12 overflow-x-hidden overflow-y-hidden' >
+      <div className='bg-hero_dark text-white lg:px-20 px-10 pt-6 pb-12 overflow-x-hidden overflow-y-hidden' >
         <Navbar
           contactsRef={contactsRef}
           homeRef={homeRef}

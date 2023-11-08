@@ -27,14 +27,11 @@ export default function Homepage({ homeRef }) {
     }
 
     return (
-        <div className="flex justify-between items-center mt-12 relative" ref={homeRef}>
-            <BackgroundRadialDrop radial_class={"w-r6 h-r6 absolute -top-24 -left-[20%] animate_rotation_c"} />
-            <div className="self-start mt-12 text-left w-[60%]">
-                <h4 className="text-gray-100 text-4xl mb-3">I'm a</h4>
-                {/* <h2 className="font-bold text-7xl">Full-Stack</h2>
-                <h2 className="font-bold text-7xl"> Software</h2>
-                <h2 className="font-bold text-7xl"> Developer.</h2> */}
-                <h2 className="font-bold text-7xl">
+        <div className="flex lg:justify-between justify-center items-center lg:mt-12 relative flex-col lg:flex-row" ref={homeRef}>
+            <BackgroundRadialDrop radial_class={"lg:w-r6 lg:h-r6 absolute lg:-top-24 lg:-left-[20%] -top-30 left-0 animate_rotation_c w-r7 h-r7"} />
+            <div className="lg:self-start lg:mt-12 mt-20 text-left lg:w-[60%] w-[100%]">
+                <h4 className="text-gray-100 lg:text-4xl text-2xl mb-3">I'm a</h4>
+                <h2 className="font-bold lg:text-7xl text-3xl">
                     <Typewriter
                         options={{
                             strings: homeData?.title,
@@ -45,7 +42,7 @@ export default function Homepage({ homeRef }) {
                     />
                 </h2>
             </div>
-            <div className="mr-12 flex justify-center items-center w-[40%] animate-float-mid">
+            <div className="mr-12 flex justify-center items-center lg:w-[40%] w-[80%] md:w-[70%] animate-float-mid">
                 <ImageKitWrapper path={homeData?.hero_image} width={650} height={650} />
             </div>
         </div>

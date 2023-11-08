@@ -23,11 +23,11 @@ export default function BlogSection({ blogHeading, blogContent, blogLink, idx })
         }
     }
     return (
-        <div className={`relative w-[80%] text-left`}>
-            <div className={`absolute w-[90%] border-hero_highlight-dark border-4 rounded-3xl h-full ${getBorderPosition(idx)}`}></div>
-            <div className="bg-hero_dark mx-5 py-5 px-10 rounded-3xl z-10 relative h-[30rem] overflow-y-auto">
-                <h3 className="text-2xl font-bold mb-5">{blogHeading}</h3>
-                <p className="text-hero_text-dark mb-5">{blogContent}</p>
+        <div className={`relative lg:w-[80%] w-[100%] text-left`}>
+            <div className={`absolute w-[90%] border-hero_highlight-dark border-4 hidden sm:inline rounded-3xl h-full ${getBorderPosition(idx)}`}></div>
+            <div className="bg-hero_dark lg:mx-5 lg:py-5 lg:px-10 sm:mx-5 sm:py-5 sm:px-10 mx-2 pl-4 pt-4 rounded-3xl z-10 relative lg:h-[30rem] h-[28rem] overflow-y-auto">
+                <h3 className="lg:text-2xl text-xl font-bold mb-5">{blogHeading}</h3>
+                <p className="text-hero_text-dark text-sm lg:text-md mb-5">{blogContent}</p>
                 <div>
                     <FontAwesomeIcon icon={faArrowRight} className="mr-5 mt-2" />
                     <a href={blogLink} target="_blank">view blog</a>

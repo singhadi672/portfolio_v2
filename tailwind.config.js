@@ -31,6 +31,10 @@ module.exports = {
       'hero_text-dark': "#657695",
       'gray-100': "#666768"
     },
+    backgroundImage: {
+      'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+    }
+
 
   },
   plugins: [],
