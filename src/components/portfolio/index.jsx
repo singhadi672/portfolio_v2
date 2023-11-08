@@ -27,9 +27,9 @@ export default function Portfolio({ portfolioRef }) {
     }
 
     return (
-        <div className="mt-28" ref={portfolioRef}>
-            <h2 className="font-semibold text-3xl">Portfolio</h2>
-            <div className="mt-20 relative">
+        <div className="lg:mt-28 mt-16" ref={portfolioRef}>
+            <h2 className="font-semibold lg:text-3xl text-4xl">Portfolio</h2>
+            <div className="lg:mt-20 mt-10 relative">
                 <BackgroundRadialDrop radial_class={"w-r5 h-r4 absolute top-[20%] right-[50%]"} />
                 {portfolioData?.length > 0 && portfolioData?.map((item, idx) =>
                     <PortfolioSection

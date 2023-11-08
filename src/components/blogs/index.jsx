@@ -13,6 +13,21 @@ export default function Blogs({ blogsRef }) {
 
 
     const [blogsData, setBlogsData] = useState([])
+    const [innerwidth, setInnerWidth] = useState(window.innerWidth)
+
+    useEffect(() => {
+        function handleWindowResize() {
+            setInnerWidth(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, [])
+
+    console.log(innerwidth)
 
     useEffect(() => {
         getBlogs();
@@ -48,7 +63,7 @@ export default function Blogs({ blogsRef }) {
         };
 
         return <>
-            <div className="mt-12 grid grid-cols-2 blogscroll gap-y-16 justify-center items-center place-items-center py-16 px-16 bg-hero_dark-100 w-[90%] h-[100%] rounded-3xl" >
+            <div className="mt-12 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 blogscroll gap-y-16 justify-center items-center place-items-center lg:py-16 lg:px-16 sm:px-10 sm:py-16 p-0 bg-hero_dark-100 w-[90%] h-[100%] rounded-3xl" >
                 {currentItems?.map((blog, idx) =>
                     <BlogSection
                         blogLink={blog?.blog_link}
@@ -76,11 +91,11 @@ export default function Blogs({ blogsRef }) {
     }
 
     return (
-        <div className="mt-28 flex justify-center items-center flex-col relative" ref={blogsRef}>
-            <h2 className="font-semibold text-3xl">Blogs</h2>
-            <BackgroundRadialDrop radial_class={"w-r8 h-r8 absolute -top-[40%] -right-[30%] animate_rotation_c"} />
+        <div className="lg:mt-28 mt-10 flex justify-center items-center flex-col relative" ref={blogsRef}>
+            <h2 className="font-semibold lg:text-3xl text-4xl">Blogs</h2>
+            <BackgroundRadialDrop radial_class={"lg:w-r8 lg:h-r8 absolute w-r5 h-r5 -top-[40%] -right-[30%] animate_rotation_c"} />
             <>
-                <PaginatedItems itemsPerPage={4} />
+                <PaginatedItems itemsPerPage={innerwidth < 768 ? 1 : 4} />
             </>
         </div>
     )
