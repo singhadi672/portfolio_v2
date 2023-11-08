@@ -29,14 +29,14 @@ export default function Experience({ experienceRef }) {
 
 
     return (
-        <div className="lg:mt-20 mt-10" ref={experienceRef}>
+        <div className="lg:mt-20 mt-16 " ref={experienceRef}>
             <h2 className="font-semibold text-3xl">Experience</h2>
             <div className="grid lg:grid-cols-4 grid-cols-3 gap-y-10 place-content-center mt-10" onClick={() => setFocusedElement(null)}>
                 {logoData?.map((logo, idx) =>
                     <div className="flex flex-col justify-center items-center relative">
                         <ImageKitWrapper className="rounded-2xl cursor-pointer w-[3rem] lg:w-[6rem]" path={logo?.technology_image} width={100} height={100} />
                         <p className="text-hero_text-dark mt-5 cursor-pointer text-xs lg:text-lg" onMouseOver={() => setFocusedElement(idx)} >{logo?.technology_name}</p>
-                        {focusedElement == idx && <div className={`z-10 experiencescroll animate-data w-[20rem] p-2 bg-hero_dark-100 rounded-3xl absolute overflow-y-auto ${idx % 4 <= 2 ? "-top-12 left-2/3" : "-top-12 right-2/3"} ${focusedElement === idx && "active"}`}>
+                        {focusedElement == idx && <div className={`z-10 experiencescroll animate-data w-[20rem] hidden lg:inline p-2 bg-hero_dark-100 rounded-3xl absolute overflow-y-auto ${idx % 4 <= 2 ? "-top-12 left-2/3" : "-top-12 right-2/3"} ${focusedElement === idx && "active"}`}>
                             <FontAwesomeIcon icon={faTimes} className="absolute right-4 top-3 cursor-pointer" onClick={() => setFocusedElement(null)} />
                             <p className="text-hero_text-dark p-2 mt-4" >{logo?.technology_description}</p>
                         </div>}
