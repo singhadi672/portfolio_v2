@@ -83,7 +83,7 @@ export default function Blogs({ blogsRef }) {
                 pageCount={pageCount}
                 previousLabel={<FontAwesomeIcon icon={faArrowLeft} />}
                 renderOnZeroPageCount={null}
-                className="flex mt-3"
+                className="flex lg:mt-3 mt-8"
                 pageClassName="mx-2"
                 activeClassName="text-hero_highlight-dark"
             />
